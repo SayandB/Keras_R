@@ -16,7 +16,7 @@ rm(test)
 Xtrain <- array(Xtrain, dim = c(dim(Xtrain)[1], prod(dim(Xtrain)[-1])))/255
 Xtest <- array(Xtest, dim = c(dim(Xtest)[1], prod(dim(Xtest)[-1])))/255
 
-#One hot encoding
+#One-hot encoding!
 Ytrain <- to_categorical(Ytrain, 10)
 Ytest <- to_categorical(Ytest, 10)
 
@@ -31,7 +31,7 @@ model %>%
 model %>% compile(loss='categorical_crossentropy', optimizer = 'adam', metrics = c('accuracy'))
 model %>% fit(Xtrain, Ytrain, epochs = 500, batch_size = 100)
 
-#Model performance and outcome
+#Model performance and prediction
 result <- model %>% evaluate(Xtest, Ytest, batch_size = 100)
 prediction <- model %>% predict_classes(Xtest)
 
